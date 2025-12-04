@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GIF Library Test - 92 Retro GIFs</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background: #000080;
+      color: #ffffff;
+      padding: 20px;
+      margin: 0;
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      text-align: center;
+      background: linear-gradient(to right, red, orange, yellow, green, blue, violet);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+    
+    .stats {
+      text-align: center;
+      background: #ffff00;
+      color: #000000;
+      padding: 15px;
+      margin: 20px 0;
+      border: 3px ridge #ff00ff;
+      font-weight: bold;
+    }
+    
+    .category {
+      background: rgba(255, 255, 255, 0.1);
+      border: 3px solid #00ffff;
+      padding: 20px;
+      margin: 30px 0;
+      border-radius: 10px;
+    }
+    
+    .category h2 {
+      color: #00ffff;
+      margin-top: 0;
+      font-size: 32px;
+    }
+    
+    .gif-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    .gif-card {
+      background: #ffffff;
+      border: 3px solid #000000;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
+    }
+    
+    .gif-card img {
+      max-width: 100%;
+      height: auto;
+      border: 2px solid #000000;
+      background: #f0f0f0;
+      padding: 10px;
+    }
+    
+    .gif-name {
+      color: #000000;
+      font-weight: bold;
+      margin: 10px 0 5px 0;
+      font-size: 14px;
+    }
+    
+    .gif-tags {
+      color: #666666;
+      font-size: 11px;
+      margin: 5px 0;
+    }
+    
+    .gif-size {
+      color: #999999;
+      font-size: 10px;
+    }
+    
+    .filter-bar {
+      background: #ff00ff;
+      padding: 15px;
+      margin: 20px 0;
+      border: 3px ridge #ffff00;
+      text-align: center;
+    }
+    
+    .filter-bar button {
+      background: #00ffff;
+      border: 2px solid #000000;
+      padding: 10px 20px;
+      margin: 5px;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    
+    .filter-bar button:hover {
+      background: #ffff00;
+    }
+    
+    .filter-bar button.active {
+      background: #00ff00;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎨 RETRO GIF LIBRARY TEST 🎨</h1>
+    
+    <div class="stats">
+      <div>✨ Total GIFs: <span id="total">92</span> ✨</div>
+      <div>📦 Animations: <span id="animations">42</span> | 🔘 Buttons: <span id="buttons">25</span> | 🎭 Decorations: <span id="decorations">25</span></div>
+    </div>
+    
+    <div class="filter-bar">
+      <strong>Filter by Theme:</strong><br><br>
+      <button onclick="filterTheme('all')" class="active">All (92)</button>
+      <button onclick="filterTheme('geocities-chaos')">🌈 Geocities</button>
+      <button onclick="filterTheme('neon-cyber-2001')">💻 Neon Cyber</button>
+      <button onclick="filterTheme('vaporwave')">🌴 Vaporwave</button>
+      <button onclick="filterTheme('vhs-glitch')">📼 VHS Glitch</button>
+      <button onclick="filterTheme('windows-95')">🪟 Windows 95</button>
+    </div>
+    
+    <div id="content"></div>
+  </div>
+
+  <script>
+    const CDN_BASE = 'https://xsuxxzzsqfvyvqyxswme.supabase.co/storage/v1/object/public/retro-gifs/';
+    
+    const gifs = [
+  {
+    "id": "angel-award",
+    "name": "Angel Award",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos",
+      "all"
+    ],
+    "tags": [
+      "award",
+      "angel",
+      "badge"
+    ],
+    "path": "animations/angel-award.gif",
+    "size": 3878
+  },
+  {
+    "id": "arrow",
+    "name": "Arrow",
+    "category": "animation",
+    "themes": [
+      "all"
+    ],
+    "tags": [
+      "arrow",
+      "pointer",
+      "direction"
+    ],
+    "path": "animations/arrow.gif",
+    "size": 1353
+  },
+  {
+    "id": "awards",
+    "name": "Awards",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos",
+      "all"
+    ],
+    "tags": [
+      "award",
+      "trophy",
+      "winner"
+    ],
+    "path": "animations/awards.gif",
+    "size": 7381
+  },
+  {
+    "id": "bew4-large-gif",
+    "name": "Best of Web",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "award",
+      "best",
+      "web"
+    ],
+    "path": "animations/bew4-large-gif.gif",
+    "size": 15657
+  },
+  {
+    "id": "cool",
+    "name": "Cool",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos",
+      "all"
+    ],
+    "tags": [
+      "cool",
+      "badge",
+      "awesome"
+    ],
+    "path": "animations/cool.gif",
+    "size": 4517
+  },
+  {
+    "id": "cool2",
+    "name": "Cool 2",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos",
+      "vaporwave"
+    ],
+    "tags": [
+      "cool",
+      "badge"
+    ],
+    "path": "animations/cool2.gif",
+    "size": 5223
+  },
+  {
+    "id": "email-geocities",
+    "name": "Email Geocities",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "email",
+      "mail",
+      "contact"
+    ],
+    "path": "animations/email-geocities.gif",
+    "size": 18506
+  },
+  {
+    "id": "email-vaporwave",
+    "name": "Email Vaporwave",
+    "category": "animation",
+    "themes": [
+      "vaporwave"
+    ],
+    "tags": [
+      "email",
+      "mail",
+      "aesthetic"
+    ],
+    "path": "animations/email-vaporwave.gif",
+    "size": 30988
+  },
+  {
+    "id": "email-vaporwave2",
+    "name": "Email Vaporwave 2",
+    "category": "animation",
+    "themes": [
+      "vaporwave"
+    ],
+    "tags": [
+      "email",
+      "mail"
+    ],
+    "path": "animations/email-vaporwave2.gif",
+    "size": 9282
+  },
+  {
+    "id": "email",
+    "name": "Email",
+    "category": "animation",
+    "themes": [
+      "all"
+    ],
+    "tags": [
+      "email",
+      "mail",
+      "contact"
+    ],
+    "path": "animations/email.gif",
+    "size": 1353
+  },
+  {
+    "id": "email2",
+    "name": "Email 2",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "email",
+      "mail"
+    ],
+    "path": "animations/email2.gif",
+    "size": 56287
+  },
+  {
+    "id": "email3",
+    "name": "Email 3",
+    "category": "animation",
+    "themes": [
+      "all"
+    ],
+    "tags": [
+      "email",
+      "mail"
+    ],
+    "path": "animations/email3.gif",
+    "size": 7711
+  },
+  {
+    "id": "email4-windowstheme",
+    "name": "Email Windows",
+    "category": "animation",
+    "themes": [
+      "windows-95"
+    ],
+    "tags": [
+      "email",
+      "mail",
+      "windows"
+    ],
+    "path": "animations/email4-windowstheme.gif",
+    "size": 181705
+  },
+  {
+    "id": "hot",
+    "name": "Hot",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos",
+      "all"
+    ],
+    "tags": [
+      "hot",
+      "fire",
+      "popular"
+    ],
+    "path": "animations/hot.gif",
+    "size": 122670
+  },
+  {
+    "id": "left-arrow",
+    "name": "Left Arrow",
+    "category": "animation",
+    "themes": [
+      "all"
+    ],
+    "tags": [
+      "arrow",
+      "left",
+      "back",
+      "navigation"
+    ],
+    "path": "animations/left-arrow.gif",
+    "size": 3332
+  },
+  {
+    "id": "loading-vaporwave",
+    "name": "Loading Vaporwave",
+    "category": "animation",
+    "themes": [
+      "vaporwave"
+    ],
+    "tags": [
+      "loading",
+      "spinner",
+      "wait"
+    ],
+    "path": "animations/loading-vaporwave.gif",
+    "size": 22087
+  },
+  {
+    "id": "loading-vhs",
+    "name": "Loading VHS",
+    "category": "animation",
+    "themes": [
+      "vhs-glitch"
+    ],
+    "tags": [
+      "loading",
+      "vhs",
+      "retro"
+    ],
+    "path": "animations/loading-vhs.gif",
+    "size": 4771
+  },
+  {
+    "id": "loading-vhs2",
+    "name": "Loading VHS 2",
+    "category": "animation",
+    "themes": [
+      "vhs-glitch"
+    ],
+    "tags": [
+      "loading",
+      "vhs"
+    ],
+    "path": "animations/loading-vhs2.gif",
+    "size": 14026
+  },
+  {
+    "id": "loading-windowstheme",
+    "name": "Loading Windows",
+    "category": "animation",
+    "themes": [
+      "windows-95"
+    ],
+    "tags": [
+      "loading",
+      "windows",
+      "hourglass"
+    ],
+    "path": "animations/loading-windowstheme.gif",
+    "size": 12474
+  },
+  {
+    "id": "mail",
+    "name": "Mail",
+    "category": "animation",
+    "themes": [
+      "all"
+    ],
+    "tags": [
+      "mail",
+      "email",
+      "letter"
+    ],
+    "path": "animations/mail.gif",
+    "size": 5565
+  },
+  {
+    "id": "mail2",
+    "name": "Mail 2",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "mail",
+      "email"
+    ],
+    "path": "animations/mail2.gif",
+    "size": 38278
+  },
+  {
+    "id": "new",
+    "name": "New",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos",
+      "all"
+    ],
+    "tags": [
+      "new",
+      "badge",
+      "announcement"
+    ],
+    "path": "animations/new.gif",
+    "size": 2546
+  },
+  {
+    "id": "new2",
+    "name": "New 2",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos",
+      "all"
+    ],
+    "tags": [
+      "new",
+      "badge",
+      "fresh"
+    ],
+    "path": "animations/new2.gif",
+    "size": 55035
+  },
+  {
+    "id": "new3-cyber",
+    "name": "New Cyber",
+    "category": "animation",
+    "themes": [
+      "neon-cyber-2001"
+    ],
+    "tags": [
+      "new",
+      "cyber",
+      "badge"
+    ],
+    "path": "animations/new3-cyber.gif",
+    "size": 9281
+  },
+  {
+    "id": "right-arrow",
+    "name": "Right Arrow",
+    "category": "animation",
+    "themes": [
+      "all"
+    ],
+    "tags": [
+      "arrow",
+      "right",
+      "next",
+      "navigation"
+    ],
+    "path": "animations/right-arrow.gif",
+    "size": 3319
+  },
+  {
+    "id": "sign-button",
+    "name": "Sign Button",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "sign",
+      "guestbook",
+      "button"
+    ],
+    "path": "animations/sign-button.gif",
+    "size": 18061
+  },
+  {
+    "id": "thankyou",
+    "name": "Thank You",
+    "category": "animation",
+    "themes": [
+      "all"
+    ],
+    "tags": [
+      "thanks",
+      "thankyou",
+      "gratitude"
+    ],
+    "path": "animations/thankyou.gif",
+    "size": 3810
+  },
+  {
+    "id": "thankyou2",
+    "name": "Thank You 2",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "thanks",
+      "thankyou"
+    ],
+    "path": "animations/thankyou2.gif",
+    "size": 12428
+  },
+  {
+    "id": "under-construction",
+    "name": "Under Construction",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos",
+      "all"
+    ],
+    "tags": [
+      "construction",
+      "wip",
+      "building"
+    ],
+    "path": "animations/under-construction.gif",
+    "size": 23919
+  },
+  {
+    "id": "under-construction2",
+    "name": "Under Construction 2",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos",
+      "all"
+    ],
+    "tags": [
+      "construction",
+      "wip"
+    ],
+    "path": "animations/under-construction2.gif",
+    "size": 13806
+  },
+  {
+    "id": "under-construction3",
+    "name": "Under Construction 3",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos",
+      "all"
+    ],
+    "tags": [
+      "construction",
+      "wip"
+    ],
+    "path": "animations/under-construction3.gif",
+    "size": 5318
+  },
+  {
+    "id": "update-coolgirls",
+    "name": "Update Cool",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "update",
+      "cool",
+      "badge"
+    ],
+    "path": "animations/update-coolgirls.gif",
+    "size": 7818
+  },
+  {
+    "id": "updated-geocities",
+    "name": "Updated Geocities",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "updated",
+      "new",
+      "fresh"
+    ],
+    "path": "animations/updated-geocities.gif",
+    "size": 5223
+  },
+  {
+    "id": "updated-neoncyber",
+    "name": "Updated Cyber",
+    "category": "animation",
+    "themes": [
+      "neon-cyber-2001"
+    ],
+    "tags": [
+      "updated",
+      "cyber",
+      "new"
+    ],
+    "path": "animations/updated-neoncyber.gif",
+    "size": 577
+  },
+  {
+    "id": "updated",
+    "name": "Updated",
+    "category": "animation",
+    "themes": [
+      "all"
+    ],
+    "tags": [
+      "updated",
+      "new",
+      "fresh"
+    ],
+    "path": "animations/updated.gif",
+    "size": 7381
+  },
+  {
+    "id": "welcome-geocities",
+    "name": "Welcome Geocities",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "welcome",
+      "greeting",
+      "hello"
+    ],
+    "path": "animations/welcome-geocities.gif",
+    "size": 15657
+  },
+  {
+    "id": "welcome-geocities2",
+    "name": "Welcome Geocities 2",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "welcome",
+      "greeting"
+    ],
+    "path": "animations/welcome-geocities2.gif",
+    "size": 18506
+  },
+  {
+    "id": "welcome-geocities3",
+    "name": "Welcome Geocities 3",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "welcome",
+      "greeting"
+    ],
+    "path": "animations/welcome-geocities3.gif",
+    "size": 85837
+  },
+  {
+    "id": "welcome-to-hell",
+    "name": "Welcome to Hell",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "welcome",
+      "hell",
+      "edgy"
+    ],
+    "path": "animations/welcome-to-hell.gif",
+    "size": 35844
+  },
+  {
+    "id": "welcome-vaporwave",
+    "name": "Welcome Vaporwave",
+    "category": "animation",
+    "themes": [
+      "vaporwave"
+    ],
+    "tags": [
+      "welcome",
+      "aesthetic",
+      "greeting"
+    ],
+    "path": "animations/welcome-vaporwave.gif",
+    "size": 30988
+  },
+  {
+    "id": "winner2",
+    "name": "Winner",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos",
+      "all"
+    ],
+    "tags": [
+      "winner",
+      "award",
+      "champion"
+    ],
+    "path": "animations/winner2.gif",
+    "size": 28908
+  },
+  {
+    "id": "winners",
+    "name": "Winners",
+    "category": "animation",
+    "themes": [
+      "geocities-chaos",
+      "all"
+    ],
+    "tags": [
+      "winner",
+      "trophy",
+      "award"
+    ],
+    "path": "animations/winners.gif",
+    "size": 15355
+  },
+  {
+    "id": "back-button-geocities",
+    "name": "Back Geocities",
+    "category": "button",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "back",
+      "navigation",
+      "button"
+    ],
+    "path": "buttons/back-button-geocities.gif",
+    "size": 12142
+  },
+  {
+    "id": "back-button-neoncyber",
+    "name": "Back Cyber",
+    "category": "button",
+    "themes": [
+      "neon-cyber-2001"
+    ],
+    "tags": [
+      "back",
+      "navigation",
+      "cyber"
+    ],
+    "path": "buttons/back-button-neoncyber.gif",
+    "size": 10129
+  },
+  {
+    "id": "back-button-vaporwave",
+    "name": "Back Vaporwave",
+    "category": "button",
+    "themes": [
+      "vaporwave"
+    ],
+    "tags": [
+      "back",
+      "navigation",
+      "aesthetic"
+    ],
+    "path": "buttons/back-button-vaporwave.gif",
+    "size": 31917
+  },
+  {
+    "id": "back-button",
+    "name": "Back",
+    "category": "button",
+    "themes": [
+      "all"
+    ],
+    "tags": [
+      "back",
+      "navigation",
+      "return"
+    ],
+    "path": "buttons/back-button.gif",
+    "size": 68536
+  },
+  {
+    "id": "blue-button",
+    "name": "Blue Button",
+    "category": "button",
+    "themes": [
+      "all"
+    ],
+    "tags": [
+      "button",
+      "blue",
+      "click"
+    ],
+    "path": "buttons/blue-button.gif",
+    "size": 4517
+  },
+  {
+    "id": "click-here-banner",
+    "name": "Click Here Banner",
+    "category": "button",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "click",
+      "banner",
+      "cta"
+    ],
+    "path": "buttons/click-here-banner.gif",
+    "size": 165327
+  },
+  {
+    "id": "click-here-button",
+    "name": "Click Here",
+    "category": "button",
+    "themes": [
+      "geocities-chaos",
+      "all"
+    ],
+    "tags": [
+      "click",
+      "button",
+      "cta"
+    ],
+    "path": "buttons/click-here-button.gif",
+    "size": 4777
+  },
+  {
+    "id": "download-button",
+    "name": "Download",
+    "category": "button",
+    "themes": [
+      "all"
+    ],
+    "tags": [
+      "download",
+      "button",
+      "save"
+    ],
+    "path": "buttons/download-button.gif",
+    "size": 8990
+  },
+  {
+    "id": "download-button2",
+    "name": "Download 2",
+    "category": "button",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "download",
+      "button"
+    ],
+    "path": "buttons/download-button2.gif",
+    "size": 26733
+  },
+  {
+    "id": "dowwnload-screen",
+    "name": "Download Screen",
+    "category": "button",
+    "themes": [
+      "windows-95"
+    ],
+    "tags": [
+      "download",
+      "windows",
+      "screen"
+    ],
+    "path": "buttons/dowwnload-screen.gif",
+    "size": 58193
+  },
+  {
+    "id": "enter-button",
+    "name": "Enter",
+    "category": "button",
+    "themes": [
+      "all"
+    ],
+    "tags": [
+      "enter",
+      "button",
+      "go"
+    ],
+    "path": "buttons/enter-button.gif",
+    "size": 7557
+  },
+  {
+    "id": "home-button",
+    "name": "Home",
+    "category": "button",
+    "themes": [
+      "all"
+    ],
+    "tags": [
+      "home",
+      "button",
+      "navigation"
+    ],
+    "path": "buttons/home-button.gif",
+    "size": 2201
+  },
+  {
+    "id": "home-button2",
+    "name": "Home 2",
+    "category": "button",
+    "themes": [
+      "all"
+    ],
+    "tags": [
+      "home",
+      "button"
+    ],
+    "path": "buttons/home-button2.gif",
+    "size": 2754
+  },
+  {
+    "id": "links-button-vaporwave",
+    "name": "Links Vaporwave",
+    "category": "button",
+    "themes": [
+      "vaporwave"
+    ],
+    "tags": [
+      "links",
+      "button",
+      "aesthetic"
+    ],
+    "path": "buttons/links-button-vaporwave.gif",
+    "size": 7098
+  },
+  {
+    "id": "links-button",
+    "name": "Links",
+    "category": "button",
+    "themes": [
+      "all"
+    ],
+    "tags": [
+      "links",
+      "button",
+      "navigation"
+    ],
+    "path": "buttons/links-button.gif",
+    "size": 8821
+  },
+  {
+    "id": "menu-buton-vaporwave",
+    "name": "Menu Vaporwave",
+    "category": "button",
+    "themes": [
+      "vaporwave"
+    ],
+    "tags": [
+      "menu",
+      "button",
+      "aesthetic"
+    ],
+    "path": "buttons/menu-buton-vaporwave.gif",
+    "size": 9822
+  },
+  {
+    "id": "menu-button-windows",
+    "name": "Menu Windows",
+    "category": "button",
+    "themes": [
+      "windows-95"
+    ],
+    "tags": [
+      "menu",
+      "button",
+      "windows"
+    ],
+    "path": "buttons/menu-button-windows.gif",
+    "size": 2868
+  },
+  {
+    "id": "menu-button",
+    "name": "Menu",
+    "category": "button",
+    "themes": [
+      "all"
+    ],
+    "tags": [
+      "menu",
+      "button",
+      "navigation"
+    ],
+    "path": "buttons/menu-button.gif",
+    "size": 5068
+  },
+  {
+    "id": "next-button-vaporwave",
+    "name": "Next Vaporwave",
+    "category": "button",
+    "themes": [
+      "vaporwave"
+    ],
+    "tags": [
+      "next",
+      "button",
+      "aesthetic"
+    ],
+    "path": "buttons/next-button-vaporwave.gif",
+    "size": 4336
+  },
+  {
+    "id": "next-button",
+    "name": "Next",
+    "category": "button",
+    "themes": [
+      "all"
+    ],
+    "tags": [
+      "next",
+      "button",
+      "forward"
+    ],
+    "path": "buttons/next-button.gif",
+    "size": 3685
+  },
+  {
+    "id": "next-button2",
+    "name": "Next 2",
+    "category": "button",
+    "themes": [
+      "all"
+    ],
+    "tags": [
+      "next",
+      "button"
+    ],
+    "path": "buttons/next-button2.gif",
+    "size": 802
+  },
+  {
+    "id": "play-button-neoncyber",
+    "name": "Play Cyber",
+    "category": "button",
+    "themes": [
+      "neon-cyber-2001"
+    ],
+    "tags": [
+      "play",
+      "button",
+      "cyber"
+    ],
+    "path": "buttons/play-button-neoncyber.gif",
+    "size": 3302
+  },
+  {
+    "id": "playback-button",
+    "name": "Playback",
+    "category": "button",
+    "themes": [
+      "vhs-glitch"
+    ],
+    "tags": [
+      "play",
+      "button",
+      "vhs"
+    ],
+    "path": "buttons/playback-button.gif",
+    "size": 33592
+  },
+  {
+    "id": "submit-button",
+    "name": "Submit",
+    "category": "button",
+    "themes": [
+      "all"
+    ],
+    "tags": [
+      "submit",
+      "button",
+      "send"
+    ],
+    "path": "buttons/submit-button.gif",
+    "size": 2513
+  },
+  {
+    "id": "submit-button2",
+    "name": "Submit 2",
+    "category": "button",
+    "themes": [
+      "all"
+    ],
+    "tags": [
+      "submit",
+      "button"
+    ],
+    "path": "buttons/submit-button2.gif",
+    "size": 2658
+  },
+  {
+    "id": "4th-of-july-banner",
+    "name": "4th of July",
+    "category": "decoration",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "banner",
+      "july",
+      "america",
+      "holiday"
+    ],
+    "path": "decorations/4th-of-july-banner.gif",
+    "size": 60058
+  },
+  {
+    "id": "binary-divider",
+    "name": "Binary Divider",
+    "category": "decoration",
+    "themes": [
+      "neon-cyber-2001"
+    ],
+    "tags": [
+      "divider",
+      "binary",
+      "cyber",
+      "line"
+    ],
+    "path": "decorations/binary-divider.gif",
+    "size": 20371
+  },
+  {
+    "id": "boring-site-divider",
+    "name": "Boring Site",
+    "category": "decoration",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "divider",
+      "funny",
+      "line"
+    ],
+    "path": "decorations/boring-site-divider.gif",
+    "size": 16949
+  },
+  {
+    "id": "colorful-spinner",
+    "name": "Colorful Spinner",
+    "category": "decoration",
+    "themes": [
+      "geocities-chaos",
+      "vaporwave"
+    ],
+    "tags": [
+      "spinner",
+      "loading",
+      "colorful"
+    ],
+    "path": "decorations/colorful-spinner.gif",
+    "size": 33539
+  },
+  {
+    "id": "computer-laughing",
+    "name": "Computer Laughing",
+    "category": "decoration",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "computer",
+      "funny",
+      "laugh"
+    ],
+    "path": "decorations/computer-laughing.gif",
+    "size": 46091
+  },
+  {
+    "id": "couple-dance",
+    "name": "Couple Dancing",
+    "category": "decoration",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "dance",
+      "couple",
+      "people"
+    ],
+    "path": "decorations/couple-dance.gif",
+    "size": 29341
+  },
+  {
+    "id": "dancing-baby",
+    "name": "Dancing Baby",
+    "category": "decoration",
+    "themes": [
+      "geocities-chaos",
+      "all"
+    ],
+    "tags": [
+      "dance",
+      "baby",
+      "classic",
+      "famous"
+    ],
+    "path": "decorations/dancing-baby.gif",
+    "size": 201207
+  },
+  {
+    "id": "dog-walking-banner",
+    "name": "Dog Walking",
+    "category": "decoration",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "dog",
+      "banner",
+      "animal"
+    ],
+    "path": "decorations/dog-walking-banner.gif",
+    "size": 43490
+  },
+  {
+    "id": "flower-vaporwave",
+    "name": "Flower Vaporwave",
+    "category": "decoration",
+    "themes": [
+      "vaporwave"
+    ],
+    "tags": [
+      "flower",
+      "aesthetic",
+      "nature"
+    ],
+    "path": "decorations/flower-vaporwave.gif",
+    "size": 14056
+  },
+  {
+    "id": "flower",
+    "name": "Flower",
+    "category": "decoration",
+    "themes": [
+      "geocities-chaos",
+      "all"
+    ],
+    "tags": [
+      "flower",
+      "nature",
+      "plant"
+    ],
+    "path": "decorations/flower.gif",
+    "size": 10477
+  },
+  {
+    "id": "footer-divider",
+    "name": "Footer Divider",
+    "category": "decoration",
+    "themes": [
+      "all"
+    ],
+    "tags": [
+      "divider",
+      "footer",
+      "line"
+    ],
+    "path": "decorations/footer-divider.gif",
+    "size": 52197
+  },
+  {
+    "id": "girl-danace",
+    "name": "Girl Dancing",
+    "category": "decoration",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "dance",
+      "girl",
+      "people"
+    ],
+    "path": "decorations/girl-danace.gif",
+    "size": 94498
+  },
+  {
+    "id": "happy new year",
+    "name": "Happy New Year",
+    "category": "decoration",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "newyear",
+      "holiday",
+      "celebration"
+    ],
+    "path": "decorations/happy new year.gif",
+    "size": 116802
+  },
+  {
+    "id": "heart",
+    "name": "Heart",
+    "category": "decoration",
+    "themes": [
+      "all"
+    ],
+    "tags": [
+      "heart",
+      "love",
+      "romance"
+    ],
+    "path": "decorations/heart.gif",
+    "size": 3727
+  },
+  {
+    "id": "heart2",
+    "name": "Heart 2",
+    "category": "decoration",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "heart",
+      "love"
+    ],
+    "path": "decorations/heart2.gif",
+    "size": 27711
+  },
+  {
+    "id": "hearts-banner",
+    "name": "Hearts Banner",
+    "category": "decoration",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "heart",
+      "banner",
+      "love"
+    ],
+    "path": "decorations/hearts-banner.gif",
+    "size": 2650
+  },
+  {
+    "id": "neoncyber-divider",
+    "name": "Neon Divider",
+    "category": "decoration",
+    "themes": [
+      "neon-cyber-2001"
+    ],
+    "tags": [
+      "divider",
+      "neon",
+      "cyber",
+      "line"
+    ],
+    "path": "decorations/neoncyber-divider.gif",
+    "size": 4488
+  },
+  {
+    "id": "newspaper-boy",
+    "name": "Newspaper Boy",
+    "category": "decoration",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "newspaper",
+      "boy",
+      "retro"
+    ],
+    "path": "decorations/newspaper-boy.gif",
+    "size": 48363
+  },
+  {
+    "id": "respect-banner-small",
+    "name": "Respect Banner",
+    "category": "decoration",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "respect",
+      "banner",
+      "badge"
+    ],
+    "path": "decorations/respect-banner-small.gif",
+    "size": 2640
+  },
+  {
+    "id": "ribbons",
+    "name": "Ribbons",
+    "category": "decoration",
+    "themes": [
+      "geocities-chaos",
+      "all"
+    ],
+    "tags": [
+      "ribbon",
+      "decoration",
+      "award"
+    ],
+    "path": "decorations/ribbons.gif",
+    "size": 34915
+  },
+  {
+    "id": "smiley-banner",
+    "name": "Smiley Banner",
+    "category": "decoration",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "smiley",
+      "banner",
+      "happy"
+    ],
+    "path": "decorations/smiley-banner.gif",
+    "size": 6628
+  },
+  {
+    "id": "smiley",
+    "name": "Smiley",
+    "category": "decoration",
+    "themes": [
+      "geocities-chaos",
+      "all"
+    ],
+    "tags": [
+      "smiley",
+      "happy",
+      "face"
+    ],
+    "path": "decorations/smiley.gif",
+    "size": 4134
+  },
+  {
+    "id": "spinning",
+    "name": "Spinning",
+    "category": "decoration",
+    "themes": [
+      "geocities-chaos",
+      "all"
+    ],
+    "tags": [
+      "spinning",
+      "rotate",
+      "animation"
+    ],
+    "path": "decorations/spinning.gif",
+    "size": 99194
+  },
+  {
+    "id": "spinning2",
+    "name": "Spinning 2",
+    "category": "decoration",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "spinning",
+      "rotate"
+    ],
+    "path": "decorations/spinning2.gif",
+    "size": 81192
+  },
+  {
+    "id": "winner-banner",
+    "name": "Winner Banner",
+    "category": "decoration",
+    "themes": [
+      "geocities-chaos"
+    ],
+    "tags": [
+      "winner",
+      "banner",
+      "award"
+    ],
+    "path": "decorations/winner-banner.gif",
+    "size": 10141
+  }
+];
+    
+    let currentTheme = 'all';
+    
+    function formatSize(bytes) {
+      return bytes < 1024 ? bytes + ' B' : (bytes / 1024).toFixed(1) + ' KB';
+    }
+    
+    function filterTheme(theme) {
+      currentTheme = theme;
+      
+      // Update button states
+      document.querySelectorAll('.filter-bar button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+      
+      renderGifs();
+    }
+    
+    function renderGifs() {
+      const filtered = currentTheme === 'all' 
+        ? gifs 
+        : gifs.filter(g => g.themes.includes(currentTheme));
+      
+      const byCategory = {
+        animation: filtered.filter(g => g.category === 'animation'),
+        button: filtered.filter(g => g.category === 'button'),
+        decoration: filtered.filter(g => g.category === 'decoration'),
+      };
+      
+      let html = '';
+      
+      for (const [category, items] of Object.entries(byCategory)) {
+        if (items.length === 0) continue;
+        
+        const emoji = category === 'animation' ? '📦' : category === 'button' ? '🔘' : '🎭';
+        html += `
+          <div class="category">
+            <h2>${emoji} ${category.toUpperCase()} (${items.length})</h2>
+            <div class="gif-grid">
+              ${items.map(gif => `
+                <div class="gif-card">
+                  <img src="${CDN_BASE}${gif.path}" alt="${gif.name}" loading="lazy" onerror="this.style.border='3px solid red'">
+                  <div class="gif-name">${gif.name}</div>
+                  <div class="gif-tags">${gif.tags.join(', ')}</div>
+                  <div class="gif-size">${formatSize(gif.size)}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+      
+      document.getElementById('content').innerHTML = html;
+    }
+    
+    // Initial render
+    renderGifs();
+  </script>
+</body>
+</html>

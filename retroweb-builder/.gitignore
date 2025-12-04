@@ -1,0 +1,70 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+.yarn/
+
+# Testing
+coverage/
+
+# Next.js
+.next/
+out/
+build/
+dist/
+
+# Environment variables - SECURITY CRITICAL - NEVER COMMIT
+.env
+.env.local
+.env*.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.production
+
+# API Keys and Secrets - SECURITY CRITICAL
+.env.keys
+*.pem
+
+# Supabase local development
+.supabase/
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Temporary files
+*.tmp
+.cache/
+
+# User uploads (if storing locally)
+/public/uploads/
+
+# Database dumps - SECURITY CRITICAL
+*.sql.gz
+*.dump
+backup-*.sql
+
+# DO NOT IGNORE - Required for Kiroween submission
+# .kiro/
+# supabase/migrations/
