@@ -1,0 +1,995 @@
+/**
+ * Retro CSS Styles
+ * Comprehensive theme-specific styles for retro transformation
+ */
+
+/* Base retro elements */
+.retroweb-element {
+  pointer-events: none;
+  z-index: 999999;
+}
+
+/* Ensure interactive elements remain clickable */
+.retro-div a,
+.retro-div button,
+.retro-div input,
+.retro-div textarea,
+.retro-div select,
+.retro-div [role="button"],
+.retro-div [onclick],
+.retro-interactive {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+.retroweb-gif {
+  position: fixed;
+  pointer-events: none;
+  z-index: 999998;
+}
+
+.retroweb-cursor-trail {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1000000;
+}
+
+/* Prevent nested retro-div styling - only style top-level containers */
+.retro-div .retro-div {
+  background: inherit !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: inherit !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+
+/* Also prevent deeply nested styling */
+.retro-div .retro-div .retro-div {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* ========================================
+   GEOCITIES CHAOS THEME
+   Maximum 90s homepage chaos - ugly and proud!
+   ======================================== */
+body[data-retro-theme="geocities-chaos"] {
+  --retro-primary: #ff00ff;
+  --retro-secondary: #00ffff;
+  --retro-accent: #ffff00;
+  --retro-bg: #ffffff;
+  font-family: "Comic Sans MS", "Times New Roman", cursive !important;
+}
+
+body[data-retro-theme="geocities-chaos"] * {
+  font-family: "Comic Sans MS", "Times New Roman", cursive !important;
+}
+
+body[data-retro-theme="geocities-chaos"] .retro-div {
+  background: #ffff00 !important;
+  border: 5px ridge #ff00ff !important;
+  box-shadow: 8px 8px 0px #000000 !important;
+  padding: 15px !important;
+  margin: 10px !important;
+}
+
+body[data-retro-theme="geocities-chaos"] .retro-div h1,
+body[data-retro-theme="geocities-chaos"] .retro-div h2,
+body[data-retro-theme="geocities-chaos"] .retro-div h3 {
+  color: #ff0000 !important;
+  text-shadow: 3px 3px 0 #00ffff, -1px -1px 0 #ff00ff !important;
+  font-size: 2em !important;
+  text-align: center !important;
+  animation: geocities-rainbow 2s linear infinite !important;
+}
+
+@keyframes geocities-rainbow {
+  0% { color: #ff0000; }
+  16% { color: #ff8800; }
+  33% { color: #ffff00; }
+  50% { color: #00ff00; }
+  66% { color: #0088ff; }
+  83% { color: #ff00ff; }
+  100% { color: #ff0000; }
+}
+
+body[data-retro-theme="geocities-chaos"] .retro-button,
+body[data-retro-theme="geocities-chaos"] button.retro-interactive {
+  background: #ff00ff !important;
+  border: 4px outset #ff88ff !important;
+  color: #ffff00 !important;
+  font-weight: bold !important;
+  font-size: 14px !important;
+  text-shadow: 2px 2px 0 #000000 !important;
+  padding: 10px 20px !important;
+  cursor: pointer !important;
+  text-transform: uppercase !important;
+}
+
+body[data-retro-theme="geocities-chaos"] .retro-button:hover,
+body[data-retro-theme="geocities-chaos"] button.retro-interactive:hover {
+  background: #00ffff !important;
+  border-style: inset !important;
+  color: #ff0000 !important;
+}
+
+body[data-retro-theme="geocities-chaos"] .retro-link,
+body[data-retro-theme="geocities-chaos"] a.retro-interactive {
+  color: #0000ff !important;
+  text-decoration: underline !important;
+  font-weight: bold !important;
+  font-size: 16px !important;
+}
+
+body[data-retro-theme="geocities-chaos"] .retro-link:visited,
+body[data-retro-theme="geocities-chaos"] a.retro-interactive:visited {
+  color: #800080 !important;
+}
+
+body[data-retro-theme="geocities-chaos"] .retro-link:hover,
+body[data-retro-theme="geocities-chaos"] a.retro-interactive:hover {
+  color: #ff0000 !important;
+  background: #ffff00 !important;
+  text-decoration: none !important;
+}
+
+body[data-retro-theme="geocities-chaos"] .retro-input,
+body[data-retro-theme="geocities-chaos"] input.retro-interactive,
+body[data-retro-theme="geocities-chaos"] textarea.retro-interactive {
+  border: 3px inset #808080 !important;
+  background: #ffffff !important;
+  padding: 6px !important;
+  font-family: "Comic Sans MS", cursive !important;
+  font-size: 14px !important;
+}
+
+body[data-retro-theme="geocities-chaos"] .retro-image {
+  border: 8px ridge #ff00ff !important;
+  padding: 5px !important;
+  background: #00ffff !important;
+}
+
+/* ========================================
+   NEON CYBER THEME
+   Early 2000s hacker/matrix aesthetic
+   ======================================== */
+body[data-retro-theme="neon-cyber-2001"] {
+  --retro-primary: #00ff00;
+  --retro-secondary: #ff00ff;
+  --retro-accent: #00ffff;
+  --retro-bg: #000000;
+  background-color: #000000 !important;
+  font-family: "Courier New", "Lucida Console", monospace !important;
+}
+
+body[data-retro-theme="neon-cyber-2001"] * {
+  font-family: "Courier New", "Lucida Console", monospace !important;
+}
+
+/* CRT scanline effect */
+body[data-retro-theme="neon-cyber-2001"]::before {
+  content: '' !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.3) 0px,
+    rgba(0, 0, 0, 0.3) 1px,
+    transparent 1px,
+    transparent 3px
+  ) !important;
+  pointer-events: none !important;
+  z-index: 9999 !important;
+}
+
+body[data-retro-theme="neon-cyber-2001"] .retro-div {
+  background: #000000 !important;
+  border: 2px solid #00ff00 !important;
+  box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, inset 0 0 5px #003300 !important;
+  padding: 15px !important;
+  color: #00ff00 !important;
+}
+
+body[data-retro-theme="neon-cyber-2001"] .retro-div * {
+  color: #00ff00 !important;
+}
+
+body[data-retro-theme="neon-cyber-2001"] .retro-div h1,
+body[data-retro-theme="neon-cyber-2001"] .retro-div h2,
+body[data-retro-theme="neon-cyber-2001"] .retro-div h3 {
+  color: #00ff00 !important;
+  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 3px !important;
+  animation: neon-flicker 3s infinite !important;
+}
+
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+    opacity: 0.8;
+  }
+}
+
+body[data-retro-theme="neon-cyber-2001"] .retro-button,
+body[data-retro-theme="neon-cyber-2001"] button.retro-interactive {
+  background: #000000 !important;
+  border: 2px solid #00ff00 !important;
+  color: #00ff00 !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+  padding: 8px 16px !important;
+  cursor: pointer !important;
+  letter-spacing: 2px !important;
+}
+
+body[data-retro-theme="neon-cyber-2001"] .retro-button:hover,
+body[data-retro-theme="neon-cyber-2001"] button.retro-interactive:hover {
+  background: #00ff00 !important;
+  color: #000000 !important;
+  box-shadow: 0 0 20px #00ff00 !important;
+}
+
+body[data-retro-theme="neon-cyber-2001"] .retro-link,
+body[data-retro-theme="neon-cyber-2001"] a.retro-interactive {
+  color: #00ffff !important;
+  text-decoration: none !important;
+}
+
+body[data-retro-theme="neon-cyber-2001"] .retro-link:hover,
+body[data-retro-theme="neon-cyber-2001"] a.retro-interactive:hover {
+  color: #ff00ff !important;
+  text-shadow: 0 0 10px #ff00ff !important;
+}
+
+body[data-retro-theme="neon-cyber-2001"] .retro-input,
+body[data-retro-theme="neon-cyber-2001"] input.retro-interactive,
+body[data-retro-theme="neon-cyber-2001"] textarea.retro-interactive {
+  background: #000000 !important;
+  border: 1px solid #00ff00 !important;
+  color: #00ff00 !important;
+  padding: 8px !important;
+  caret-color: #00ff00 !important;
+}
+
+body[data-retro-theme="neon-cyber-2001"] .retro-image {
+  border: 2px solid #00ff00 !important;
+  filter: brightness(0.9) contrast(1.3) saturate(0.5) sepia(0.3) hue-rotate(70deg) !important;
+}
+
+/* ========================================
+   PIXEL ARCADE THEME
+   8-bit retro gaming aesthetic
+   ======================================== */
+body[data-retro-theme="pixel-arcade"] {
+  --retro-primary: #ffff00;
+  --retro-secondary: #ff0000;
+  --retro-accent: #00ff00;
+  --retro-bg: #000080;
+  image-rendering: pixelated !important;
+  image-rendering: crisp-edges !important;
+}
+
+body[data-retro-theme="pixel-arcade"] * {
+  font-family: "Courier New", monospace !important;
+  image-rendering: pixelated !important;
+}
+
+body[data-retro-theme="pixel-arcade"] .retro-div {
+  background: #000080 !important;
+  border: 4px solid #ffff00 !important;
+  box-shadow: 6px 6px 0 #000000 !important;
+  padding: 12px !important;
+  color: #ffffff !important;
+}
+
+body[data-retro-theme="pixel-arcade"] .retro-div * {
+  color: #ffffff !important;
+}
+
+body[data-retro-theme="pixel-arcade"] .retro-div h1,
+body[data-retro-theme="pixel-arcade"] .retro-div h2,
+body[data-retro-theme="pixel-arcade"] .retro-div h3 {
+  color: #ffff00 !important;
+  text-shadow: 4px 4px 0 #000000 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 4px !important;
+  animation: pixel-blink 1s step-end infinite !important;
+}
+
+@keyframes pixel-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+body[data-retro-theme="pixel-arcade"] .retro-button,
+body[data-retro-theme="pixel-arcade"] button.retro-interactive {
+  background: #ff0000 !important;
+  border: 4px solid #ffff00 !important;
+  color: #ffffff !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+  padding: 8px 16px !important;
+  cursor: pointer !important;
+  box-shadow: 4px 4px 0 #000000 !important;
+  text-shadow: 2px 2px 0 #000000 !important;
+}
+
+body[data-retro-theme="pixel-arcade"] .retro-button:hover,
+body[data-retro-theme="pixel-arcade"] button.retro-interactive:hover {
+  background: #00ff00 !important;
+  color: #000000 !important;
+  transform: translate(2px, 2px) !important;
+  box-shadow: 2px 2px 0 #000000 !important;
+}
+
+body[data-retro-theme="pixel-arcade"] .retro-link,
+body[data-retro-theme="pixel-arcade"] a.retro-interactive {
+  color: #00ffff !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+  text-shadow: 2px 2px 0 #000000 !important;
+}
+
+body[data-retro-theme="pixel-arcade"] .retro-link:hover,
+body[data-retro-theme="pixel-arcade"] a.retro-interactive:hover {
+  color: #ffff00 !important;
+  background: #ff0000 !important;
+  padding: 2px 4px !important;
+}
+
+body[data-retro-theme="pixel-arcade"] .retro-input,
+body[data-retro-theme="pixel-arcade"] input.retro-interactive,
+body[data-retro-theme="pixel-arcade"] textarea.retro-interactive {
+  background: #000000 !important;
+  border: 4px solid #ffff00 !important;
+  color: #00ff00 !important;
+  padding: 6px !important;
+  text-shadow: 1px 1px 0 #003300 !important;
+}
+
+body[data-retro-theme="pixel-arcade"] .retro-image {
+  border: 6px solid #ffff00 !important;
+  box-shadow: 6px 6px 0 #000000 !important;
+  background: #000080 !important;
+  padding: 4px !important;
+}
+
+/* ========================================
+   VHS GLITCH THEME
+   Analog video distortion aesthetic
+   ======================================== */
+body[data-retro-theme="vhs-glitch"] {
+  --retro-primary: #ff0080;
+  --retro-secondary: #00ffaa;
+  --retro-accent: #8000ff;
+  --retro-bg: #1a1a1a;
+  font-family: "Arial", "Helvetica", sans-serif !important;
+}
+
+/* VHS tracking lines */
+body[data-retro-theme="vhs-glitch"]::before {
+  content: '' !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.1) 2px,
+    rgba(0, 0, 0, 0.1) 4px
+  ) !important;
+  pointer-events: none !important;
+  z-index: 9999 !important;
+  animation: vhs-tracking 0.5s infinite !important;
+}
+
+@keyframes vhs-tracking {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(1px); }
+  100% { transform: translateY(0); }
+}
+
+body[data-retro-theme="vhs-glitch"] .retro-div {
+  background: #1a1a1a !important;
+  border: 3px solid #ff0080 !important;
+  padding: 15px !important;
+  color: #ffffff !important;
+  position: relative !important;
+}
+
+body[data-retro-theme="vhs-glitch"] .retro-div * {
+  color: #ffffff !important;
+}
+
+/* Chromatic aberration effect on headings */
+body[data-retro-theme="vhs-glitch"] .retro-div h1,
+body[data-retro-theme="vhs-glitch"] .retro-div h2,
+body[data-retro-theme="vhs-glitch"] .retro-div h3 {
+  color: #ffffff !important;
+  text-shadow: 
+    -3px 0 #ff0080,
+    3px 0 #00ffaa,
+    0 0 10px rgba(255, 0, 128, 0.5) !important;
+  animation: vhs-glitch-text 3s infinite !important;
+  text-transform: uppercase !important;
+}
+
+@keyframes vhs-glitch-text {
+  0%, 90%, 100% {
+    text-shadow: -3px 0 #ff0080, 3px 0 #00ffaa;
+    transform: translateX(0);
+  }
+  92% {
+    text-shadow: -5px 0 #ff0080, 5px 0 #00ffaa;
+    transform: translateX(-2px);
+  }
+  94% {
+    text-shadow: 5px 0 #ff0080, -5px 0 #00ffaa;
+    transform: translateX(2px);
+  }
+  96% {
+    text-shadow: -3px 0 #ff0080, 3px 0 #00ffaa;
+    transform: translateX(0);
+  }
+}
+
+body[data-retro-theme="vhs-glitch"] .retro-button,
+body[data-retro-theme="vhs-glitch"] button.retro-interactive {
+  background: #ff0080 !important;
+  border: 3px solid #ffffff !important;
+  color: #ffffff !important;
+  font-weight: bold !important;
+  padding: 10px 20px !important;
+  cursor: pointer !important;
+  text-shadow: 2px 0 #00ffaa, -2px 0 #8000ff !important;
+}
+
+body[data-retro-theme="vhs-glitch"] .retro-button:hover,
+body[data-retro-theme="vhs-glitch"] button.retro-interactive:hover {
+  background: #00ffaa !important;
+  color: #000000 !important;
+  text-shadow: none !important;
+}
+
+body[data-retro-theme="vhs-glitch"] .retro-link,
+body[data-retro-theme="vhs-glitch"] a.retro-interactive {
+  color: #00ffaa !important;
+  text-decoration: underline !important;
+  text-shadow: 1px 0 #ff0080 !important;
+}
+
+body[data-retro-theme="vhs-glitch"] .retro-link:hover,
+body[data-retro-theme="vhs-glitch"] a.retro-interactive:hover {
+  color: #ff0080 !important;
+  text-shadow: 1px 0 #00ffaa !important;
+}
+
+body[data-retro-theme="vhs-glitch"] .retro-input,
+body[data-retro-theme="vhs-glitch"] input.retro-interactive,
+body[data-retro-theme="vhs-glitch"] textarea.retro-interactive {
+  background: #000000 !important;
+  border: 2px solid #ff0080 !important;
+  color: #00ffaa !important;
+  padding: 8px !important;
+}
+
+body[data-retro-theme="vhs-glitch"] .retro-image {
+  border: 4px solid #ff0080 !important;
+  filter: contrast(1.3) saturate(1.2) !important;
+  box-shadow: -3px 0 #00ffaa, 3px 0 #ff0080 !important;
+}
+
+/* ========================================
+   VAPORWAVE THEME
+   A E S T H E T I C - 80s/90s nostalgia, VHS, early digital
+   ======================================== */
+body[data-retro-theme="vaporwave"] {
+  --retro-primary: #ff71ce;
+  --retro-secondary: #01cdfe;
+  --retro-accent: #b967ff;
+  --retro-bg: #2d1b4e;
+  background: linear-gradient(180deg, #2d1b4e 0%, #1a0a2e 100%) !important;
+  font-family: "Arial", "Helvetica Neue", sans-serif !important;
+}
+
+/* VHS scanline overlay effect */
+body[data-retro-theme="vaporwave"]::before {
+  content: '' !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 2px,
+      rgba(255, 113, 206, 0.03) 2px,
+      rgba(255, 113, 206, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 3px,
+      rgba(1, 205, 254, 0.02) 3px,
+      rgba(1, 205, 254, 0.02) 6px
+    ) !important;
+  pointer-events: none !important;
+  z-index: 9998 !important;
+}
+
+/* CRT screen curvature effect */
+body[data-retro-theme="vaporwave"]::after {
+  content: '' !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%) !important;
+  pointer-events: none !important;
+  z-index: 9997 !important;
+}
+
+body[data-retro-theme="vaporwave"] * {
+  font-family: "Arial", "Helvetica Neue", sans-serif !important;
+}
+
+body[data-retro-theme="vaporwave"] .retro-div {
+  background: linear-gradient(135deg, rgba(45, 27, 78, 0.95) 0%, rgba(26, 10, 46, 0.95) 100%) !important;
+  border: 2px solid #ff71ce !important;
+  padding: 15px !important;
+  box-shadow: 
+    0 0 20px rgba(255, 113, 206, 0.5),
+    0 0 40px rgba(1, 205, 254, 0.3),
+    inset 0 0 30px rgba(185, 103, 255, 0.1) !important;
+  color: #ffffff !important;
+  position: relative !important;
+}
+
+/* Chromatic aberration effect on containers */
+body[data-retro-theme="vaporwave"] .retro-div::before {
+  content: '' !important;
+  position: absolute !important;
+  top: -2px !important;
+  left: -2px !important;
+  right: -2px !important;
+  bottom: -2px !important;
+  border: 1px solid rgba(1, 205, 254, 0.3) !important;
+  pointer-events: none !important;
+}
+
+body[data-retro-theme="vaporwave"] .retro-div * {
+  color: #ffffff !important;
+}
+
+/* Headings with 80s chrome/neon effect */
+body[data-retro-theme="vaporwave"] .retro-div h1,
+body[data-retro-theme="vaporwave"] .retro-div h2,
+body[data-retro-theme="vaporwave"] .retro-div h3,
+body[data-retro-theme="vaporwave"] h1,
+body[data-retro-theme="vaporwave"] h2,
+body[data-retro-theme="vaporwave"] h3 {
+  color: #ff71ce !important;
+  text-shadow: 
+    0 0 10px #ff71ce,
+    0 0 20px #ff71ce,
+    0 0 40px #b967ff,
+    4px 4px 0 #01cdfe,
+    -1px -1px 0 #05ffa1 !important;
+  letter-spacing: 6px !important;
+  text-transform: uppercase !important;
+  font-weight: bold !important;
+  font-style: italic !important;
+  animation: vaporwave-glow 3s ease-in-out infinite alternate !important;
+}
+
+@keyframes vaporwave-glow {
+  0% {
+    text-shadow: 
+      0 0 10px #ff71ce,
+      0 0 20px #ff71ce,
+      0 0 40px #b967ff,
+      4px 4px 0 #01cdfe;
+    filter: brightness(1);
+  }
+  100% {
+    text-shadow: 
+      0 0 15px #ff71ce,
+      0 0 30px #ff71ce,
+      0 0 60px #b967ff,
+      4px 4px 0 #01cdfe;
+    filter: brightness(1.1);
+  }
+}
+
+/* Buttons - 80s gradient chrome style */
+body[data-retro-theme="vaporwave"] .retro-button,
+body[data-retro-theme="vaporwave"] button.retro-interactive,
+body[data-retro-theme="vaporwave"] button {
+  background: linear-gradient(180deg, #ff71ce 0%, #b967ff 50%, #ff71ce 100%) !important;
+  border: 3px solid !important;
+  border-color: #fffb96 #b967ff #b967ff #fffb96 !important;
+  color: #ffffff !important;
+  font-weight: bold !important;
+  padding: 10px 24px !important;
+  cursor: pointer !important;
+  box-shadow: 
+    0 0 15px rgba(255, 113, 206, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  text-shadow: 2px 2px 0 #2d1b4e !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+}
+
+body[data-retro-theme="vaporwave"] .retro-button:hover,
+body[data-retro-theme="vaporwave"] button.retro-interactive:hover,
+body[data-retro-theme="vaporwave"] button:hover {
+  background: linear-gradient(180deg, #01cdfe 0%, #05ffa1 50%, #01cdfe 100%) !important;
+  border-color: #fffb96 #05ffa1 #05ffa1 #fffb96 !important;
+  box-shadow: 
+    0 0 30px rgba(1, 205, 254, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Links - neon glow */
+body[data-retro-theme="vaporwave"] .retro-link,
+body[data-retro-theme="vaporwave"] a.retro-interactive,
+body[data-retro-theme="vaporwave"] a {
+  color: #01cdfe !important;
+  text-decoration: none !important;
+  text-shadow: 0 0 10px #01cdfe, 0 0 20px #01cdfe !important;
+  border-bottom: 1px solid transparent !important;
+  transition: all 0.3s ease !important;
+}
+
+body[data-retro-theme="vaporwave"] .retro-link:hover,
+body[data-retro-theme="vaporwave"] a:hover {
+  color: #ff71ce !important;
+  text-shadow: 0 0 15px #ff71ce, 0 0 30px #ff71ce !important;
+  border-bottom-color: #ff71ce !important;
+}
+
+/* Inputs - retro computer terminal style */
+body[data-retro-theme="vaporwave"] .retro-input,
+body[data-retro-theme="vaporwave"] input.retro-interactive,
+body[data-retro-theme="vaporwave"] textarea.retro-interactive,
+body[data-retro-theme="vaporwave"] input,
+body[data-retro-theme="vaporwave"] textarea,
+body[data-retro-theme="vaporwave"] select {
+  background: #0a0a12 !important;
+  border: 2px solid #b967ff !important;
+  color: #01cdfe !important;
+  padding: 8px 12px !important;
+  box-shadow: 
+    0 0 10px rgba(185, 103, 255, 0.4),
+    inset 0 0 20px rgba(1, 205, 254, 0.1) !important;
+  font-family: "Courier New", monospace !important;
+}
+
+body[data-retro-theme="vaporwave"] .retro-input:focus,
+body[data-retro-theme="vaporwave"] input:focus,
+body[data-retro-theme="vaporwave"] textarea:focus {
+  border-color: #ff71ce !important;
+  box-shadow: 0 0 20px rgba(255, 113, 206, 0.6) !important;
+}
+
+/* Images - VHS/retro filter effect */
+body[data-retro-theme="vaporwave"] .retro-image,
+body[data-retro-theme="vaporwave"] img {
+  border: 3px solid #ff71ce !important;
+  box-shadow: 
+    0 0 20px rgba(255, 113, 206, 0.5),
+    0 0 40px rgba(185, 103, 255, 0.3),
+    -3px 0 0 rgba(1, 205, 254, 0.3),
+    3px 0 0 rgba(255, 113, 206, 0.3) !important;
+  filter: saturate(1.3) contrast(1.15) brightness(1.05) !important;
+}
+
+/* Vaporwave text styling */
+body[data-retro-theme="vaporwave"] p,
+body[data-retro-theme="vaporwave"] span,
+body[data-retro-theme="vaporwave"] div,
+body[data-retro-theme="vaporwave"] li {
+  color: #e0e0e0 !important;
+}
+
+/* Override nested div for vaporwave - keep the aesthetic */
+body[data-retro-theme="vaporwave"] .retro-div .retro-div {
+  background: rgba(26, 10, 46, 0.7) !important;
+  border: 1px solid rgba(255, 113, 206, 0.5) !important;
+  box-shadow: 0 0 10px rgba(185, 103, 255, 0.2) !important;
+}
+
+/* Vaporwave scrollbar styling */
+body[data-retro-theme="vaporwave"]::-webkit-scrollbar {
+  width: 12px !important;
+  background: #1a0a2e !important;
+}
+
+body[data-retro-theme="vaporwave"]::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff71ce, #b967ff) !important;
+  border: 2px solid #01cdfe !important;
+}
+
+body[data-retro-theme="vaporwave"]::-webkit-scrollbar-track {
+  background: #0a0a12 !important;
+  box-shadow: inset 0 0 5px rgba(185, 103, 255, 0.3) !important;
+}
+
+/* ========================================
+   WINDOWS 95/98 THEME
+   Classic Windows desktop aesthetic
+   ======================================== */
+body[data-retro-theme="windows-95"] {
+  --retro-primary: #000080;
+  --retro-secondary: #c0c0c0;
+  --retro-accent: #008080;
+  --retro-bg: #008080;
+  background-color: #008080 !important;
+  font-family: "Tahoma", "MS Sans Serif", "Arial", sans-serif !important;
+}
+
+body[data-retro-theme="windows-95"] * {
+  font-family: "Tahoma", "MS Sans Serif", "Arial", sans-serif !important;
+}
+
+/* Main containers - Windows panel style */
+body[data-retro-theme="windows-95"] .retro-div {
+  background: #c0c0c0 !important;
+  background-color: #c0c0c0 !important;
+  background-image: none !important;
+  border: 2px solid !important;
+  border-color: #ffffff #808080 #808080 #ffffff !important;
+  padding: 8px !important;
+  box-shadow: 1px 1px 0 #000000 !important;
+  color: #000000 !important;
+}
+
+/* Override nested div prevention for Windows 95 - allow gray background */
+body[data-retro-theme="windows-95"] .retro-div .retro-div {
+  background: #c0c0c0 !important;
+  border: 1px solid !important;
+  border-color: #808080 #ffffff #ffffff #808080 !important;
+  box-shadow: none !important;
+}
+
+body[data-retro-theme="windows-95"] .retro-div h1,
+body[data-retro-theme="windows-95"] .retro-div h2,
+body[data-retro-theme="windows-95"] .retro-div h3,
+body[data-retro-theme="windows-95"] .retro-div h4,
+body[data-retro-theme="windows-95"] .retro-div h5,
+body[data-retro-theme="windows-95"] .retro-div h6,
+body[data-retro-theme="windows-95"] h1,
+body[data-retro-theme="windows-95"] h2,
+body[data-retro-theme="windows-95"] h3 {
+  color: #000080 !important;
+  font-weight: bold !important;
+  text-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Windows 95 buttons - classic 3D effect */
+body[data-retro-theme="windows-95"] .retro-button,
+body[data-retro-theme="windows-95"] button.retro-interactive,
+body[data-retro-theme="windows-95"] button {
+  background: #c0c0c0 !important;
+  border: 2px solid !important;
+  border-color: #ffffff #808080 #808080 #ffffff !important;
+  color: #000000 !important;
+  font-size: 12px !important;
+  padding: 4px 16px !important;
+  cursor: pointer !important;
+  text-align: center !important;
+  box-shadow: 1px 1px 0 #000000 !important;
+  text-shadow: none !important;
+  min-width: auto !important;
+  outline: none !important;
+}
+
+body[data-retro-theme="windows-95"] .retro-button:hover,
+body[data-retro-theme="windows-95"] button.retro-interactive:hover,
+body[data-retro-theme="windows-95"] button:hover {
+  background: #d4d4d4 !important;
+}
+
+body[data-retro-theme="windows-95"] .retro-button:active,
+body[data-retro-theme="windows-95"] button.retro-interactive:active,
+body[data-retro-theme="windows-95"] button:active {
+  border-color: #808080 #ffffff #ffffff #808080 !important;
+  box-shadow: none !important;
+  padding: 5px 15px 3px 17px !important;
+}
+
+/* Links - classic blue underlined */
+body[data-retro-theme="windows-95"] .retro-link,
+body[data-retro-theme="windows-95"] a.retro-interactive,
+body[data-retro-theme="windows-95"] a {
+  color: #0000ff !important;
+  text-decoration: underline !important;
+  text-shadow: none !important;
+  background: transparent !important;
+}
+
+body[data-retro-theme="windows-95"] .retro-link:visited,
+body[data-retro-theme="windows-95"] a:visited {
+  color: #800080 !important;
+}
+
+body[data-retro-theme="windows-95"] .retro-link:hover,
+body[data-retro-theme="windows-95"] a:hover {
+  color: #ff0000 !important;
+}
+
+/* Inputs - sunken 3D effect */
+body[data-retro-theme="windows-95"] .retro-input,
+body[data-retro-theme="windows-95"] input.retro-interactive,
+body[data-retro-theme="windows-95"] textarea.retro-interactive,
+body[data-retro-theme="windows-95"] select.retro-interactive,
+body[data-retro-theme="windows-95"] input,
+body[data-retro-theme="windows-95"] textarea,
+body[data-retro-theme="windows-95"] select {
+  background: #ffffff !important;
+  border: 2px solid !important;
+  border-color: #808080 #ffffff #ffffff #808080 !important;
+  color: #000000 !important;
+  padding: 2px 4px !important;
+  font-size: 12px !important;
+  box-shadow: inset 1px 1px 0 #404040 !important;
+}
+
+body[data-retro-theme="windows-95"] .retro-input:focus,
+body[data-retro-theme="windows-95"] input:focus,
+body[data-retro-theme="windows-95"] textarea:focus,
+body[data-retro-theme="windows-95"] select:focus {
+  outline: 1px dotted #000000 !important;
+}
+
+/* Images - sunken frame */
+body[data-retro-theme="windows-95"] .retro-image,
+body[data-retro-theme="windows-95"] img {
+  border: 2px solid !important;
+  border-color: #808080 #ffffff #ffffff #808080 !important;
+  box-shadow: inset 1px 1px 0 #404040 !important;
+}
+
+/* Text colors for readability */
+body[data-retro-theme="windows-95"] p,
+body[data-retro-theme="windows-95"] span,
+body[data-retro-theme="windows-95"] div,
+body[data-retro-theme="windows-95"] li,
+body[data-retro-theme="windows-95"] td,
+body[data-retro-theme="windows-95"] th,
+body[data-retro-theme="windows-95"] label {
+  color: #000000 !important;
+}
+
+/* ========================================
+   COMMON RETRO STYLES
+   ======================================== */
+.retro-interactive {
+  transition: all 0.2s ease !important;
+}
+
+.retro-preserve-function {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+/* ========================================
+   REGION-SPECIFIC STYLING
+   Smart element detection for adaptive effects
+   ======================================== */
+
+/* Hero sections - lighter effects to preserve CTAs */
+[data-retro-region="hero"] {
+  /* Reduce visual noise in hero sections */
+}
+
+[data-retro-region="hero"] .retro-div {
+  opacity: 0.95 !important;
+}
+
+[data-retro-region="hero"] .retro-button,
+[data-retro-region="hero"] button.retro-interactive {
+  /* Ensure hero CTAs remain prominent */
+  opacity: 1 !important;
+  z-index: 10 !important;
+}
+
+/* Sidebars - maintain navigation clarity */
+[data-retro-region="sidebar"] {
+  /* Keep sidebar navigation functional */
+}
+
+[data-retro-region="sidebar"] .retro-link,
+[data-retro-region="sidebar"] a.retro-interactive {
+  /* Ensure sidebar links remain readable */
+  opacity: 0.98 !important;
+}
+
+/* Main content - preserve readability */
+[data-retro-region="main-content"] {
+  /* Reduce effects in main content for readability */
+}
+
+[data-retro-region="main-content"] .retro-div {
+  opacity: 0.9 !important;
+}
+
+/* Footers - more aggressive styling allowed */
+[data-retro-region="footer"] {
+  /* Footers can handle more retro effects */
+}
+
+[data-retro-region="footer"] .retro-div {
+  opacity: 1 !important;
+}
+
+/* Prevent GIF overlap with critical regions */
+[data-retro-region="hero"] .retroweb-gif,
+[data-retro-region="sidebar"] .retroweb-gif {
+  /* GIFs should avoid hero and sidebar regions */
+  opacity: 0.7 !important;
+}
+
+/* ========================================
+   WINDOWS 95 CRASH EFFECT
+   Classic frozen window trail effect
+   ======================================== */
+
+/* Ghost elements that trail behind cursor on Windows 95 modals */
+.retroweb-crash-ghost {
+  position: fixed !important;
+  pointer-events: none !important;
+  z-index: 999990 !important;
+  background: #c0c0c0 !important;
+  border: 2px solid !important;
+  border-color: #ffffff #808080 #808080 #ffffff !important;
+  box-shadow: 1px 1px 0 #000000 !important;
+  font-family: "Tahoma", "MS Sans Serif", "Arial", sans-serif !important;
+  overflow: hidden !important;
+  animation: none !important;
+}
+
+/* Title bar styling for ghost windows */
+.retroweb-crash-ghost::before {
+  content: '' !important;
+  display: block !important;
+  height: 18px !important;
+  background: linear-gradient(90deg, #000080, #1084d0) !important;
+  margin: -2px -2px 4px -2px !important;
+  border-bottom: 1px solid #808080 !important;
+}
+
+/* Make ghost text look like Windows 95 */
+.retroweb-crash-ghost * {
+  font-family: "Tahoma", "MS Sans Serif", "Arial", sans-serif !important;
+  font-size: 11px !important;
+  color: #000000 !important;
+}
+
+/* Slight variation in ghost opacity for depth effect */
+.retroweb-crash-ghost:nth-child(odd) {
+  opacity: 0.9 !important;
+}
+
+.retroweb-crash-ghost:nth-child(even) {
+  opacity: 0.85 !important;
+}
+
+/* ========================================
