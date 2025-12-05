@@ -13,7 +13,7 @@ RetroWeb is a dual-project submission that resurrects the aesthetic and spirit o
 ## 🔗 Live Links
 
 - **RetroWeb Builder**: [https://retroweb-builder.vercel.app/](https://retroweb-builder.vercel.app/)
-- **Chrome Extension**: [Chrome Web Store Link](https://chromewebstore.google.com/detail/blcpkmpoajokmglipcngegcnfocklplp?utm_source=item-share-cb) *(placeholder)*
+- **Chrome Extension**: [Chrome Web Store Link](https://chromewebstore.google.com/detail/blcpkmpoajokmglipcngegcnfocklplp?utm_source=item-share-cb)
 - **GitHub Repository**: [https://github.com/TalhaShaikhcodes/retroweb](https://github.com/TalhaShaikhcodes/retroweb)
 
 ## 📖 Table of Contents
